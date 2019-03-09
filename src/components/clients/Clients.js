@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import PropTypes from "prop-types";
 
 class Clients extends Component {
   render() {
@@ -58,6 +59,11 @@ class Clients extends Component {
     }
   }
 }
+
+Clients.propTypes = {
+  firestore: PropTypes.object.isRequired,
+  clients: PropTypes.array
+};
 
 export default compose(
   firestoreConnect([{ collection: "clients" }]),
