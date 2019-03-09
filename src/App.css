@@ -1,0 +1,5 @@
+@media screen and (min-witdh: 765px) {
+  .navbar .navbar-nav {
+    text-align: center;
+  }
+}
