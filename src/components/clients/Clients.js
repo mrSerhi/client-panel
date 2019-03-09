@@ -5,6 +5,9 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import PropTypes from "prop-types";
 
+// Components
+import Spinner from "../layout/SpinnerLoader/Spinner";
+
 class Clients extends Component {
   render() {
     const { clients } = this.props;
@@ -55,7 +58,7 @@ class Clients extends Component {
         </div>
       );
     } else {
-      return <p className="lead">Loading...</p>;
+      return <Spinner />;
     }
   }
 }
