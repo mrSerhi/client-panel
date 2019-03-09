@@ -9,8 +9,25 @@ import PropTypes from "prop-types";
 import Spinner from "../layout/SpinnerLoader/Spinner";
 
 class Clients extends Component {
+  state = {
+    totalBalance: null
+  };
+
+  static getDerivedStateFromProps(prevProps, nextState) {
+    const { clients } = prevProps;
+    if (clients) {
+      const totalBalance = clients.reduce((acc, curr) => {
+        return (acc += parseFloat(curr.balance));
+      }, 0);
+      return { totalBalance };
+    }
+
+    return null;
+  }
+
   render() {
     const { clients } = this.props;
+    const { totalBalance } = this.state;
 
     if (clients) {
       return (
@@ -21,7 +38,13 @@ class Clients extends Component {
             </h3>
           </div>
           <div className="col-sm-6">
-            <h3>Sum: 40</h3>
+            <h4 className="text-right">
+              <span className="text-muted">All Balance:</span>{" "}
+              <span className="text-primary font-weight-bold">
+                <i className="fas fa-dollar-sign" />
+                {parseFloat(totalBalance).toFixed(2)}
+              </span>
+            </h4>
           </div>
           <table className="table table-striped mt-2">
             <thead className="thead-inverse">
@@ -41,7 +64,7 @@ class Clients extends Component {
                       {firstName} {lastName}
                     </td>
                     <td>{email}</td>
-                    <td>{parseFloat(balance).toFixed(2)}</td>
+                    <td>${parseFloat(balance).toFixed(2)}</td>
                     <td>
                       <Link
                         to={`/client/${id}`}
