@@ -1,0 +1,16 @@
+.client-color {
+  color: #ff2e63;
+}
+
+.balance {
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.balance-danger {
+  color: #c40d0d;
+}
+
+.balance-good {
+  color: #00c000;
+}

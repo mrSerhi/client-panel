@@ -12,10 +12,7 @@ const HeaderOfClients = ({ balance }) => {
       <div className="col-sm-6">
         <h4 className="text-right">
           <span className="text-muted">All Balance:</span>{" "}
-          <span className="text-primary font-weight-bold">
-            <i className="fas fa-dollar-sign" />
-            {balance}
-          </span>
+          <span className="text-primary font-weight-bold">&#36;{balance}</span>
         </h4>
       </div>
     </React.Fragment>
