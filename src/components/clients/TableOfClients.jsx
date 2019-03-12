@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import formatNumber from "../../utils/formatNumber";
 
 const TableOfClients = ({ clients }) => {
   return (
@@ -22,7 +23,7 @@ const TableOfClients = ({ clients }) => {
                 {firstName} {lastName}
               </td>
               <td>{email}</td>
-              <td>${parseFloat(balance).toFixed(2)}</td>
+              <td>&#36;{formatNumber(balance)}</td>
               <td>
                 <Link
                   to={`/client/${id}`}

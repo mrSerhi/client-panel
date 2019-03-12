@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import formatNumber from "../../utils/formatNumber";
 
 const HeaderOfClients = ({ balance }) => {
   return (
@@ -12,7 +13,9 @@ const HeaderOfClients = ({ balance }) => {
       <div className="col-sm-6">
         <h4 className="text-right">
           <span className="text-muted">All Balance:</span>{" "}
-          <span className="text-primary font-weight-bold">&#36;{balance}</span>
+          <span className="text-primary font-weight-bold">
+            &#36;{formatNumber(balance)}
+          </span>
         </h4>
       </div>
     </React.Fragment>

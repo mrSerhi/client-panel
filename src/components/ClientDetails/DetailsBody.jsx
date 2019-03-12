@@ -1,4 +1,5 @@
 import React from "react";
+import formatNumber from "../../utils/formatNumber";
 
 const DetailsBody = ({ client }) => {
   const { firstName, lastName, id, balance, phone, email } = client;
@@ -7,7 +8,7 @@ const DetailsBody = ({ client }) => {
 
   return (
     <div className="row">
-      <div className="col-md-8">
+      <div className="col-md-10">
         <div className="card">
           <h3 className="card-header client-color">
             {firstName} {lastName}
@@ -24,7 +25,9 @@ const DetailsBody = ({ client }) => {
               <div className="col-md-4 col-sm-6">
                 <h3>
                   <span className="font-weight-bold">Balance:</span>{" "}
-                  <span className={balanceStyle}>&#36;{balance}</span>
+                  <span className={balanceStyle}>
+                    &#36;{formatNumber(balance)}
+                  </span>
                 </h3>
               </div>
             </div>
