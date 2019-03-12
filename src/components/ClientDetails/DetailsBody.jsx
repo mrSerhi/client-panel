@@ -1,10 +1,27 @@
 import React from "react";
 import formatNumber from "../../utils/formatNumber";
 
-const DetailsBody = ({ client }) => {
+// child
+import FormUpdateBalance from "./FormUpdateBalance";
+
+const DetailsBody = ({
+  client,
+  state,
+  onToggle,
+  onChangeValue,
+  onSubmitBalance
+}) => {
   const { firstName, lastName, id, balance, phone, email } = client;
+  const { toggleUpdate, updateValue } = state;
   const balanceStyle =
     balance > 0 ? "balance balance-danger" : "balance balance-good";
+  const togglingForm = toggleUpdate ? (
+    <FormUpdateBalance
+      value={updateValue}
+      onChange={onChangeValue}
+      onSubmit={onSubmitBalance}
+    />
+  ) : null;
 
   return (
     <div className="row">
@@ -28,7 +45,11 @@ const DetailsBody = ({ client }) => {
                   <span className={balanceStyle}>
                     &#36;{formatNumber(balance)}
                   </span>
+                  <button onClick={onToggle} className="btn btn-link p-0 ml-1">
+                    <i className="fas fa-pencil-alt" />
+                  </button>
                 </h3>
+                {togglingForm}
               </div>
             </div>
 

@@ -10,6 +10,38 @@ import BtnControls from "./BtnControls";
 import DetailsBody from "./DetailsBody";
 
 class ClientDetails extends Component {
+  state = {
+    toggleUpdate: false,
+    updateValue: ""
+  };
+
+  onToggleUpdate = () =>
+    this.setState(({ toggleUpdate }) => {
+      return { toggleUpdate: !this.state.toggleUpdate };
+    });
+
+  onChangeValue = e => this.setState({ updateValue: e.target.value });
+
+  // submiting update balances
+  onSubmitBalance = e => {
+    e.preventDefault();
+
+    const { client, firestore } = this.props;
+    const { updateValue } = this.state;
+    // update one value of each client
+    const clientUpdate = {
+      balance: parseFloat(updateValue)
+    };
+    firestore.update({ collection: "clients", doc: client.id }, clientUpdate);
+    this.setState({ updateValue: "" }); // clear input field
+  };
+
+  onDeleteClient = async () => {
+    const { client, firestore, history } = this.props;
+    await firestore.delete({ collection: "clients", doc: client.id }, client);
+    history.push("/");
+  };
+
   render() {
     const { client } = this.props;
     if (client) {
@@ -17,10 +49,16 @@ class ClientDetails extends Component {
         <React.Fragment>
           <div className="row">
             <LinkBackToDashboard />
-            <BtnControls id={client.id} />
+            <BtnControls id={client.id} onDeleteClient={this.onDeleteClient} />
           </div>
           <hr />
-          <DetailsBody client={client} />
+          <DetailsBody
+            client={client}
+            state={this.state}
+            onToggle={this.onToggleUpdate}
+            onChangeValue={this.onChangeValue}
+            onSubmitBalance={this.onSubmitBalance}
+          />
         </React.Fragment>
       );
     }
