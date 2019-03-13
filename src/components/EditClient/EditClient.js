@@ -5,6 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 // Components
 import Spinner from "../layout/SpinnerLoader/Spinner";
 import FormClient from "../Client/FormClient";
+import LinkBackToDashboard from "../layout/BackToDashboard";
 
 class EditClient extends Component {
   constructor(props) {
@@ -47,11 +48,14 @@ class EditClient extends Component {
     const { client } = this.props;
 
     return client ? (
-      <FormClient
-        data={client}
-        refs={refs}
-        formSubmit={this.handleFormSubmit}
-      />
+      <React.Fragment>
+        <LinkBackToDashboard />
+        <FormClient
+          data={client}
+          refs={refs}
+          formSubmit={this.handleFormSubmit}
+        />
+      </React.Fragment>
     ) : (
       <Spinner />
     );
