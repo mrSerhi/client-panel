@@ -6,6 +6,15 @@ import FormClient from "./FormClient";
 import LinkBackToDashboard from "../layout/BackToDashboard";
 
 class AddClient extends Component {
+  constructor(props) {
+    super(props);
+
+    this.firstNameRef = React.createRef();
+    this.lastNameRef = React.createRef();
+    this.emailRef = React.createRef();
+    this.phoneRef = React.createRef();
+    this.balanceRef = React.createRef();
+  }
   state = {
     firstName: "",
     lastName: "",
@@ -72,13 +81,21 @@ class AddClient extends Component {
   };
 
   render() {
+    const [...refs] = [
+      this.firstNameRef,
+      this.lastNameRef,
+      this.emailRef,
+      this.phoneRef,
+      this.balanceRef
+    ];
     return (
       <section className="form-client">
         <LinkBackToDashboard />
         <FormClient
-          state={this.state}
+          data={this.state}
           onInputChange={this.handleInputChange}
           formSubmit={this.handleFormSubmit}
+          refs={refs}
         />
       </section>
     );
