@@ -93,6 +93,7 @@ class AddClient extends Component {
         <LinkBackToDashboard />
         <FormClient
           data={this.state}
+          title={{ header: "Add New Client", submit: "Add Client" }}
           onInputChange={this.handleInputChange}
           formSubmit={this.handleFormSubmit}
           refs={refs}

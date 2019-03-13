@@ -3,13 +3,14 @@ import InputGroup from "./InputGroup";
 
 class FormClient extends Component {
   render() {
-    const { data, refs, onInputChange = null, formSubmit } = this.props;
+    const { data, refs, title, onInputChange = null, formSubmit } = this.props;
     const { firstName, lastName, email, phone, balance, error = "" } = data;
+    const { header, submit } = title;
     return (
       <div className="row">
         <div className="col-md-8 offset-md-2 my-5">
           <div className="card m-auto">
-            <div className="card-header bg-info text-white">Add New Client</div>
+            <div className="card-header bg-info text-white">{header}</div>
             <div className="card-body">
               <form id="form-client-add" onSubmit={formSubmit}>
                 <InputGroup
@@ -74,7 +75,7 @@ class FormClient extends Component {
 
                 <input
                   type="submit"
-                  value="Add Client"
+                  value={submit}
                   className="btn btn-primary btn-block"
                 />
               </form>

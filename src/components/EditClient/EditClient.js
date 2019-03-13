@@ -52,6 +52,7 @@ class EditClient extends Component {
         <LinkBackToDashboard />
         <FormClient
           data={client}
+          title={{ header: "Update Data Client", submit: "Update" }}
           refs={refs}
           formSubmit={this.handleFormSubmit}
         />
