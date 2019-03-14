@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// proptect authentication routes
+import {
+  UserIsAuthenticated,
+  UserIsNotAuthenticated
+} from "./utils/protectAuth";
+
 import { Provider } from "react-redux";
 import store from "./store";
 // Components
@@ -21,11 +27,31 @@ class App extends Component {
             <AppNavbar />
             <div className="container">
               <Switch>
-                <Route exact path="/login" component={Login} />
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/client/add" component={AddClient} />
-                <Route exact path="/client/edit/:id" component={EditClient} />
-                <Route exact path="/client/:id" component={ClientDetails} />
+                <Route
+                  exact
+                  path="/login"
+                  component={UserIsNotAuthenticated(Login)}
+                />
+                <Route
+                  exact
+                  path="/"
+                  component={UserIsAuthenticated(Dashboard)}
+                />
+                <Route
+                  exact
+                  path="/client/add"
+                  component={UserIsAuthenticated(AddClient)}
+                />
+                <Route
+                  exact
+                  path="/client/edit/:id"
+                  component={UserIsAuthenticated(EditClient)}
+                />
+                <Route
+                  exact
+                  path="/client/:id"
+                  component={UserIsAuthenticated(ClientDetails)}
+                />
               </Switch>
             </div>
           </div>
