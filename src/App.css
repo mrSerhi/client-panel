@@ -1,5 +1,11 @@
-@media screen and (min-witdh: 765px) {
-  .navbar .navbar-nav {
+@media screen and (min-width: 200px) {
+  .navbar .navbar-nav .nav-item > .nav-link {
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 580px) {
+  .navbar .navbar-nav .nav-item > .nav-link {
+    text-align: left;
   }
 }
