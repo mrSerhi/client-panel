@@ -4,29 +4,24 @@ import {
   ALLOW_REGISTRATION
 } from "../actions/types";
 
-// hard coding(that parapaters are should coming from localStorage)
-const initState = {
-  disableBalanceOnAdd: true,
-  disableBalanceOnEdit: false,
-  allowRegistration: false
-};
-
-export default (state = initState, action) => {
+// empty object because we're start using localStorage for save our init state
+// With action.payload we're will be change state
+export default (state = {}, action) => {
   switch (action.type) {
     case DISABLE_BALANCE_ON_ADD:
       return {
         ...state,
-        disableBalanceOnAdd: !state.disableBalanceOnAdd
+        disableBalanceOnAdd: action.payload
       };
     case DISABLE_BALANCE_ON_EDIT:
       return {
         ...state,
-        disableBalanceOnEdit: !state.disableBalanceOnEdit
+        disableBalanceOnEdit: action.payload
       };
     case ALLOW_REGISTRATION:
       return {
         ...state,
-        allowRegistration: !state.allowRegistration
+        allowRegistration: action.payload
       };
     default:
       return state;
