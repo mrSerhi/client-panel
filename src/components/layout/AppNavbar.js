@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
+import PropTypes from "prop-types";
 
 class AppNavbar extends Component {
   state = {
@@ -57,7 +58,13 @@ class AppNavbar extends Component {
 
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <a href="#!" className="nav-link">
+                <Link to="/settings" className="nav-link">
+                  Settings
+                </Link>
+              </li>
+
+              <li className="nav-item">
+                <a href="#!" className="nav-link active disabled">
                   {email}
                 </a>
               </li>
@@ -76,6 +83,11 @@ class AppNavbar extends Component {
     );
   }
 }
+
+AppNavbar.propTypes = {
+  firebase: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
+};
 
 export default compose(
   firebaseConnect(),
