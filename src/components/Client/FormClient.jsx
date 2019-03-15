@@ -3,7 +3,14 @@ import InputGroup from "./InputGroup";
 
 class FormClient extends Component {
   render() {
-    const { data, refs, title, onInputChange = null, formSubmit } = this.props;
+    const {
+      data,
+      refs,
+      title,
+      disabling,
+      onInputChange = null,
+      formSubmit
+    } = this.props;
     const { firstName, lastName, email, phone, balance, error = "" } = data;
     const { header, submit } = title;
     return (
@@ -71,6 +78,7 @@ class FormClient extends Component {
                   }}
                   onChange={onInputChange}
                   refs={refs[4]}
+                  disabling={disabling}
                 />
 
                 <input

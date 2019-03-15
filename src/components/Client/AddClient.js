@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 
 // child components
@@ -88,6 +90,8 @@ class AddClient extends Component {
       this.phoneRef,
       this.balanceRef
     ];
+    const { disableBalanceOnAdd } = this.props.settings;
+
     return (
       <section className="form-client">
         <LinkBackToDashboard />
@@ -97,10 +101,16 @@ class AddClient extends Component {
           onInputChange={this.handleInputChange}
           formSubmit={this.handleFormSubmit}
           refs={refs}
+          disabling={disableBalanceOnAdd}
         />
       </section>
     );
   }
 }
 
-export default firestoreConnect()(AddClient);
+export default compose(
+  firestoreConnect(),
+  connect((state, props) => ({
+    settings: state.settings
+  }))
+)(AddClient);

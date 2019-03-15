@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class InputGroup extends Component {
   render() {
-    const { settings, error = "", refs, onChange = null } = this.props;
+    const {
+      settings,
+      error = "",
+      refs,
+      disabling,
+      onChange = null
+    } = this.props;
     const {
       label = "",
       name,
@@ -25,9 +31,9 @@ class InputGroup extends Component {
           name={name}
           defaultValue={value}
           placeholder={placeholder}
-          // required={requared}
           onChange={onChange}
           ref={refs}
+          disabled={disabling}
         />
         {error && errorInfo}
       </div>

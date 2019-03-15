@@ -46,6 +46,7 @@ class EditClient extends Component {
       this.balanceRef
     ];
     const { client } = this.props;
+    const { disableBalanceOnEdit } = this.props.settings;
 
     return client ? (
       <React.Fragment>
@@ -55,6 +56,7 @@ class EditClient extends Component {
           title={{ header: "Update Data Client", submit: "Update" }}
           refs={refs}
           formSubmit={this.handleFormSubmit}
+          disabling={disableBalanceOnEdit}
         />
       </React.Fragment>
     ) : (
@@ -67,7 +69,8 @@ export default compose(
   firestoreConnect(props => [
     { collection: "clients", storeAs: "client", doc: props.match.params.id }
   ]),
-  connect(({ firestore: { ordered } }, props) => ({
-    client: ordered.client && ordered.client[0]
+  connect(({ firestore: { ordered }, settings }, props) => ({
+    client: ordered.client && ordered.client[0],
+    settings
   }))
 )(EditClient);
