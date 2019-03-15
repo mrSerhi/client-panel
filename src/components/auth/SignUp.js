@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
+import PropTypes from "prop-types";
 // action
 import { notifyUser } from "../../actions/notifyAction";
 // components
@@ -86,6 +87,12 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  firebase: PropTypes.object.isRequired,
+  notifyUser: PropTypes.func.isRequired,
+  settings: PropTypes.object
+};
 
 export default compose(
   firebaseConnect(),

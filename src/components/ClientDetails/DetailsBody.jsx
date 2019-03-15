@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import formatNumber from "../../utils/formatNumber";
 
 // child
@@ -74,6 +75,14 @@ const DetailsBody = ({
       </div>
     </div>
   );
+};
+
+DetailsBody.propTypes = {
+  client: PropTypes.object.isRequired,
+  state: PropTypes.object.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onChangeValue: PropTypes.func.isRequired,
+  onSubmitBalance: PropTypes.func.isRequired
 };
 
 export default DetailsBody;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
+import PropTypes from "prop-types";
 // Components
 import Spinner from "../layout/SpinnerLoader/Spinner";
 import FormClient from "../Client/FormClient";
@@ -64,6 +65,12 @@ class EditClient extends Component {
     );
   }
 }
+
+EditClient.propTypes = {
+  client: PropTypes.object.isRequired,
+  firestore: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired
+};
 
 export default compose(
   firestoreConnect(props => [

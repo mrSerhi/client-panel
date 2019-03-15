@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import InputGroup from "./InputGroup";
 
 class FormClient extends Component {
@@ -13,6 +14,7 @@ class FormClient extends Component {
     } = this.props;
     const { firstName, lastName, email, phone, balance, error = "" } = data;
     const { header, submit } = title;
+
     return (
       <div className="row">
         <div className="col-md-8 offset-md-2 my-5">
@@ -94,5 +96,14 @@ class FormClient extends Component {
     );
   }
 }
+
+FormClient.propTypes = {
+  data: PropTypes.object.isRequired,
+  refs: PropTypes.array.isRequired,
+  title: PropTypes.object,
+  disabling: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func,
+  formSubmit: PropTypes.func.isRequired
+};
 
 export default FormClient;
