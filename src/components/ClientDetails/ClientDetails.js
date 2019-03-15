@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
@@ -15,10 +16,9 @@ class ClientDetails extends Component {
     updateValue: ""
   };
 
-  onToggleUpdate = () =>
-    this.setState(({ toggleUpdate }) => {
-      return { toggleUpdate: !this.state.toggleUpdate };
-    });
+  onToggleUpdate = () => {
+    this.setState({ toggleUpdate: !this.state.toggleUpdate });
+  };
 
   onChangeValue = e => this.setState({ updateValue: e.target.value });
 
@@ -66,6 +66,11 @@ class ClientDetails extends Component {
     return <Spinner />;
   }
 }
+
+ClientDetails.propTypes = {
+  client: PropTypes.object.isRequired,
+  firestore: PropTypes.object.isRequired
+};
 
 export default compose(
   firestoreConnect(props => [

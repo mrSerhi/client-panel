@@ -28,14 +28,32 @@ class AppNavbar extends Component {
   render() {
     const { isAuthenticated: isAuth } = this.state;
     const { email } = this.props.auth;
+    const { allowRegistration } = this.props.settings;
     const navbarNavClass = "collapse navbar-collapse ";
     const showNavBar = !isAuth ? "d-none" : navbarNavClass;
+    const signUp =
+      !isAuth && allowRegistration ? (
+        <div className="collapse navbar-collapse" id="signupNav">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                <i className="fas fa-sign-in-alt" /> Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                <i className="fas fa-unlock-alt" /> Sign up
+              </Link>
+            </li>
+          </ul>
+        </div>
+      ) : null;
 
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-info mb-2">
         <div className="container">
           <Link to="/" className="navbar-brand text-capitalize">
-            client panel
+            <i className="fas fa-user-astronaut" /> client panel
           </Link>
 
           <button
@@ -78,6 +96,8 @@ class AppNavbar extends Component {
               </li>
             </ul>
           </div>
+          {/* when needed registration */}
+          {signUp}
         </div>
       </nav>
     );
@@ -86,10 +106,14 @@ class AppNavbar extends Component {
 
 AppNavbar.propTypes = {
   firebase: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired
 };
 
 export default compose(
   firebaseConnect(),
-  connect((state, props) => ({ auth: state.firebase.auth }))
+  connect((state, props) => ({
+    auth: state.firebase.auth,
+    settings: state.settings
+  }))
 )(AppNavbar);
