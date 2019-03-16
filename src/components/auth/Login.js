@@ -22,16 +22,17 @@ class Login extends Component {
     try {
       await firebase.login({ email, password });
     } catch (e) {
-      notifyUser(e.message, "error");
+      notifyUser(e.message, "errorLogin");
     }
   };
 
   render() {
     const { email, password } = this.state;
     const { message, messageType } = this.props.notify;
-    const errorAlert = message ? (
-      <Alert message={message} messageType={messageType} />
-    ) : null;
+    const errorAlert =
+      message && messageType === "errorLogin" ? (
+        <Alert message={message} messageType={messageType} />
+      ) : null;
 
     return (
       <React.Fragment>

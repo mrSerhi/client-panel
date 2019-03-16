@@ -4,7 +4,7 @@ const Alert = ({ message, messageType }) => {
   const chooseTypeClass =
     messageType === "success"
       ? "alert alert-success"
-      : messageType === "error"
+      : messageType.includes("error")
       ? "alert alert-danger"
       : "alert";
   return <div className={chooseTypeClass}>{message}</div>;

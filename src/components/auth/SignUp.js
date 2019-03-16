@@ -23,16 +23,17 @@ class SignUP extends Component {
     try {
       await firebase.createUser({ email, password });
     } catch (e) {
-      notifyUser(e.message, "error");
+      notifyUser(e.message, "errorSignUp");
     }
   };
 
   render() {
     const { email, password } = this.state;
     const { message, messageType } = this.props.notify;
-    const errorAlert = message ? (
-      <Alert message={message} messageType={messageType} />
-    ) : null;
+    const errorAlert =
+      message && messageType === "errorSignUp" ? (
+        <Alert message={message} messageType={messageType} />
+      ) : null;
 
     return (
       <React.Fragment>
