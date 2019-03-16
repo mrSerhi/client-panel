@@ -5,7 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import PropTypes from "prop-types";
 
 // Components
-import Spinner from "../layout/SpinnerLoader/Spinner";
+import Spinner from "../Layout/SpinnerLoader/Spinner";
 import TableOfClients from "./TableOfClients";
 import HeaderOfClients from "./HeaderOfClients";
 

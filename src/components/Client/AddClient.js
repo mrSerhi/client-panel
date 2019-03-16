@@ -5,7 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 
 // child components
 import FormClient from "./FormClient";
-import LinkBackToDashboard from "../layout/BackToDashboard";
+import LinkBackToDashboard from "../Layout/BackToDashboard";
 
 class AddClient extends Component {
   constructor(props) {

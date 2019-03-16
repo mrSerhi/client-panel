@@ -2,7 +2,7 @@
   "name": "client-panel",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/mrSerhi/client-panel",
+  "homepage": "https://mrserhi.github.io/client-panel/",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "firebase": "^5.8.6",

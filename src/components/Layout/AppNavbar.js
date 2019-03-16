@@ -96,7 +96,6 @@ class AppNavbar extends Component {
               </li>
             </ul>
           </div>
-          {/* when needed registration */}
           {signUp}
         </div>
       </nav>

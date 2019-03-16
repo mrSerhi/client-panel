@@ -9,7 +9,7 @@ import {
 } from "../../actions/settingsActions";
 
 // components
-import LinkBackToDashboard from "../layout/BackToDashboard";
+import LinkBackToDashboard from "../Layout/BackToDashboard";
 import FormCheckInput from "./FormCheck";
 
 class Settings extends Component {

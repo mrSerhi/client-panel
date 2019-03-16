@@ -5,8 +5,8 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import "./styles.css";
 // Components
-import Spinner from "../layout/SpinnerLoader/Spinner";
-import LinkBackToDashboard from "../layout/BackToDashboard";
+import Spinner from "../Layout/SpinnerLoader/Spinner";
+import LinkBackToDashboard from "../Layout/BackToDashboard";
 import BtnControls from "./BtnControls";
 import DetailsBody from "./DetailsBody";
 

@@ -5,7 +5,7 @@ import { firebaseConnect } from "react-redux-firebase"; // for login use firebas
 // action
 import { notifyUser } from "../../actions/notifyAction";
 // components
-import Alert from "../layout/Alert";
+import Alert from "../Layout/Alert";
 
 class Login extends Component {
   state = {

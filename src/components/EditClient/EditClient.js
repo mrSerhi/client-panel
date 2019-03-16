@@ -4,9 +4,9 @@ import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 import PropTypes from "prop-types";
 // Components
-import Spinner from "../layout/SpinnerLoader/Spinner";
+import Spinner from "../Layout/SpinnerLoader/Spinner";
 import FormClient from "../Client/FormClient";
-import LinkBackToDashboard from "../layout/BackToDashboard";
+import LinkBackToDashboard from "../Layout/BackToDashboard";
 
 class EditClient extends Component {
   constructor(props) {

@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 // action
 import { notifyUser } from "../../actions/notifyAction";
 // components
-import Alert from "../layout/Alert";
+import Alert from "../Layout/Alert";
 
-class Login extends Component {
+class SignUP extends Component {
   state = {
     email: "",
     password: ""
@@ -88,7 +88,7 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
+SignUP.propTypes = {
   firebase: PropTypes.object.isRequired,
   notifyUser: PropTypes.func.isRequired,
   settings: PropTypes.object
@@ -103,4 +103,4 @@ export default compose(
     }),
     { notifyUser }
   )
-)(Login);
+)(SignUP);

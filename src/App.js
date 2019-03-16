@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+//  BrowserRouter
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 // protect authentication routes
 import {
   UserIsAuthenticated,
@@ -11,8 +12,8 @@ import {
 import { Provider } from "react-redux";
 import store from "./store";
 // Components
-import AppNavbar from "./components/layout/AppNavbar";
-import Dashboard from "./components/layout/Dashboard";
+import AppNavbar from "./components/Layout/AppNavbar";
+import Dashboard from "./components/Layout/Dashboard";
 import AddClient from "./components/Client/AddClient";
 import EditClient from "./components/EditClient/EditClient";
 import ClientDetails from "./components/ClientDetails/ClientDetails";

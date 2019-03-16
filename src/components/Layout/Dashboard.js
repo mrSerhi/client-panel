@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import Clients from "../clients/Clients";
+import Clients from "../Clients/Clients";
 import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
